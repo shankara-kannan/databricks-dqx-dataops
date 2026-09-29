@@ -1,0 +1,10 @@
+resources:
+  jobs:
+    dqx_customer_quality:
+      name: "dqx-customer-quality-${bundle.target}"
+      tasks:
+        - task_key: run_dqx
+          notebook_task:
+            notebook_path: "DataOps Demonstration/Source/DQX_Rule.ipynb"
+            base_parameters:
+              catalog: "${var.catalog}"
