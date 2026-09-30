@@ -11,5 +11,5 @@ databricks bundle deploy -t dev
 run the job 
 
 databricks bundle run -t dev dqx_customer_quality
-
+databricks bundle run -t prod dqx_customer_quality
 

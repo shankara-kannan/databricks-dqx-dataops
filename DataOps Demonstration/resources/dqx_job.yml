@@ -3,7 +3,15 @@ resources:
     dqx_customer_quality:
       name: "dqx-customer-quality-${bundle.target}"
       tasks:
+        - task_key: setup_catalog
+          notebook_task:
+            notebook_path: "../Source/create_catalog.ipynb"
+            base_parameters:
+              catalog: "${var.catalog}"
+
         - task_key: run_dqx
+          depends_on:
+            - task_key: setup_catalog
           notebook_task:
             notebook_path: "../Source/DQX_Rule.ipynb"
             base_parameters:
