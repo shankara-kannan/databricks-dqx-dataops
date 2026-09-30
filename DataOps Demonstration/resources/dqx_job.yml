@@ -5,6 +5,6 @@ resources:
       tasks:
         - task_key: run_dqx
           notebook_task:
-            notebook_path: "DataOps Demonstration/Source/DQX_Rule.ipynb"
+            notebook_path: "../Source/DQX_Rule.ipynb"
             base_parameters:
               catalog: "${var.catalog}"
