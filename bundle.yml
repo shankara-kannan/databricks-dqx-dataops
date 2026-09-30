@@ -2,7 +2,7 @@ bundle:
   name: databricks-dqx-dataops
 
 include:
-  - resources/*.yml
+  - DataOps Demonstration/resources/*.yml
 
 variables:
   catalog:
