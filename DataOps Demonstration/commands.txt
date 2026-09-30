@@ -1,0 +1,15 @@
+pwd
+
+cd main directory 
+
+validate the bundle 
+databricks bundle validate -t dev
+
+deploy the bundle 
+databricks bundle deploy -t dev 
+
+run the job 
+
+databricks bundle run -t dev dqx_customer_quality
+
+
