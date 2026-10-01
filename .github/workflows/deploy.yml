@@ -15,8 +15,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install Databricks CLI v1
-        run: pip install databricks-cli
+      - name: Upgrade pip
+        run: pip install --upgrade pip
+
+      - name: Install Databricks CLI (latest)
+        run: pip install --upgrade databricks-cli
 
       - name: Verify CLI version
         run: databricks -v
