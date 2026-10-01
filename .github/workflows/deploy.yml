@@ -10,9 +10,9 @@ jobs:
       DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
     steps:
       - uses: actions/checkout@v3
-      - name: Install Databricks CLI
-        run: pip install databricks-cli
+      - name: Install Databricks CLI v1
+      run: pip install databricks-cli-bundle
       - name: Deploy bundle
-        run: databricks bundle deploy --target dev
+      run: databricks bundle deploy --target dev
       - name: Run job
-        run: databricks bundle run dqx_customer_quality --target dev
+      run: databricks bundle run dqx_customer_quality --target dev
