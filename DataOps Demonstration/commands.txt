@@ -4,6 +4,7 @@ cd main directory
 
 validate the bundle 
 databricks bundle validate -t dev
+databricks bundle validate -t prod
 
 deploy the bundle 
 databricks bundle deploy -t dev 
