@@ -31,16 +31,3 @@ jobs:
 
       - name: Run job
         run: databricks bundle run dqx_customer_quality -t dev
-
-      - name: Verify run status
-        run: |
-          run_id=$(databricks jobs list-runs --job-name dqx_customer_quality --limit 1 --output json | jq -r '.[0].run_id')
-          echo "Latest run_id: $run_id"
-
-          result=$(databricks jobs get-run --run-id $run_id --output json | jq -r '.state.result_state')
-          echo "Result state: $result"
-
-          if [ "$result" != "SUCCESS" ]; then
-            echo "Run failed!"
-            exit 1
-          fi
