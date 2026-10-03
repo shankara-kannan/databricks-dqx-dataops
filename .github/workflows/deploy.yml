@@ -15,10 +15,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install Databricks CLI v1
+      - name: Install Databricks CLI v1.19.0
         run: |
-          curl -fsSL https://raw.githubusercontent.com/databricks/cli/main/install.sh | bash
-          databricks -v
+          curl -L https://github.com/databricks/cli/releases/download/v1.19.0/databricks_cli_1.19.0_linux_amd64.tar.gz -o databricks.tar.gz
+          tar -xzf databricks.tar.gz
+          chmod +x databricks
+          sudo mv databricks /usr/local/bin/
+          databricks version
 
       - name: Validate bundle
         run: databricks bundle validate -t dev
@@ -28,3 +31,16 @@ jobs:
 
       - name: Run job
         run: databricks bundle run dqx_customer_quality -t dev
+
+      - name: Verify run status
+        run: |
+          run_id=$(databricks jobs list-runs --job-name dqx_customer_quality --limit 1 --output json | jq -r '.[0].run_id')
+          echo "Latest run_id: $run_id"
+
+          result=$(databricks jobs get-run --run-id $run_id --output json | jq -r '.state.result_state')
+          echo "Result state: $result"
+
+          if [ "$result" != "SUCCESS" ]; then
+            echo "Run failed!"
+            exit 1
+          fi
