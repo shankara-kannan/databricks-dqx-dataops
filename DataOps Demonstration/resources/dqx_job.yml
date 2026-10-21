@@ -2,6 +2,7 @@ resources:
   jobs:
     dqx_customer_quality:
       name: "dqx-customer-quality-${bundle.target}"
+
       tasks:
         - task_key: setup_catalog
           notebook_task:
@@ -16,3 +17,11 @@ resources:
             notebook_path: "../Source/DQX_Rule.ipynb"
             base_parameters:
               catalog: "${var.catalog}"
+
+  job_runs:
+    dqx_file_change_trigger:
+      job_id: ${resources.jobs.dqx_customer_quality.id}
+
+      lifecycle:
+        triggers:
+          - on_file_change: "../Source/*.ipynb"

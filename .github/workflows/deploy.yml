@@ -28,6 +28,3 @@ jobs:
 
       - name: Deploy bundle
         run: databricks bundle deploy -t dev
-
-      - name: Run job
-        run: databricks bundle run dqx_customer_quality -t dev

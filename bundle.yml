@@ -1,5 +1,7 @@
+
 bundle:
   name: databricks-dqx-dataops
+  engine: direct
 
 include:
   - DataOps Demonstration/resources/*.yml
