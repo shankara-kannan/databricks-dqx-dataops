@@ -24,3 +24,8 @@ resources:
       lifecycle:
         triggers:
           - on_file_change: "../Source/*.ipynb"
+
+
+
+
+          
