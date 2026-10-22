@@ -21,7 +21,6 @@ resources:
   job_runs:
     dqx_file_change_trigger:
       job_id: ${resources.jobs.dqx_customer_quality.id}
-
       lifecycle:
         triggers:
           - on_file_change: "../Source/*.ipynb"
