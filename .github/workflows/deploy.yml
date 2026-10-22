@@ -17,7 +17,7 @@ jobs:
 
       - name: Install Databricks CLI v1.19.0
         run: |
-          curl -L https://github.com/databricks/cli/releases/download/v1.19.0/databricks_cli_1.19.0_linux_amd64.tar.gz -o databricks.tar.gz
+          curl -L https://github.com/databricks/cli/releases/download/v1.21.0/databricks_cli_1.21.0_linux_arm64.zip -o databricks.tar.gz
           tar -xzf databricks.tar.gz
           chmod +x databricks
           sudo mv databricks /usr/local/bin/
